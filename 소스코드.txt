@@ -1,0 +1,100 @@
+# 환율 계산 함수 정의
+def convert_currency(amount, rate):
+    return amount * rate
+
+# 사용자 입력 받기
+krw = float(input("원화를 입력하세요 (₩): "))
+usd_rate = float(input("적용할 환율을 입력하세요 (예: 0.00076): "))
+
+# 환율 계산
+usd = convert_currency(krw, usd_rate)
+
+# 결과 출력
+print(f"{krw:,.0f}원은 현재 환율로 ${usd:,.2f}입니다.")
+
+
+
+
+
+
+# 환율 계산 함수 정의
+def convert_currency(amount, rate):
+    return amount * rate
+
+while True:
+    try:
+        krw = float(input("원화를 입력하세요 (₩): "))
+        if krw < 0:
+            print("금액은 음수일 수 없습니다.")
+            continue
+
+        usd_rate = float(input("환율을 입력하세요 (예: 0.00076): "))
+        usd = convert_currency(krw, usd_rate)
+
+        print(f"{krw:,.0f}원은 환율 {usd_rate} 적용 시 ${usd:,.2f}입니다.")
+
+        # 반복 여부 확인
+        again = input("계속 하시겠습니까? (y/n): ")
+        if again.lower() != 'y':
+            print("프로그램을 종료합니다.")
+            break
+    except ValueError:
+        print("잘못된 입력입니다. 숫자를 입력해주세요.")
+
+
+<별그리기>
+[왼쪽정렬]
+n = int(input("별의 줄 수를 입력하세요: "))
+
+for i in range(1, n + 1):
+    print('*' * i)
+
+
+
+[가운데정렬]
+n = int(input("피라미드 높이를 입력하세요: "))
+
+for i in range(1, n + 1):
+    print(' ' * (n - i) + '*' * (2 * i - 1))
+
+
+
+[역삼각형 가운데 정렬]
+n = int(input("역피라미드 높이를 입력하세요: "))
+
+for i in range(n, 0, -1):
+    print(' ' * (n - i) + '*' * (2 * i - 1))
+
+
+
+[오른쪽정렬]
+n = int(input("별의 줄 수를 입력하세요: "))
+
+for i in range(1, n + 1):
+    print(' ' * (n - i) + '*' * i)
+
+
+
+<누진세>
+def calculate_tax(income):
+    if income <= 1200:
+        tax = income * 0.06
+    elif income <= 4600:
+        tax = 1200 * 0.06 + (income - 1200) * 0.15
+    elif income <= 8800:
+        tax = 1200 * 0.06 + (4600 - 1200) * 0.15 + (income - 4600) * 0.24
+    else:
+        tax = (1200 * 0.06 +
+               (4600 - 1200) * 0.15 +
+               (8800 - 4600) * 0.24 +
+               (income - 8800) * 0.35)
+    return tax
+
+# 사용자 입력
+income = float(input("과세 대상 소득을 만원 단위로 입력하세요: "))
+
+# 세금 계산 및 출력
+tax_amount = calculate_tax(income)
+print(f"과세소득: {income:,.0f}만원 → 누진세액: {tax_amount:,.1f}만원")
+
+
